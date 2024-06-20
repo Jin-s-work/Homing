@@ -30,6 +30,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontFamily: 'AppleSDGothicNeo',
+
                 ),
               ),
             ),
@@ -40,6 +41,7 @@ class HomePage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 minimumSize: Size(344, 56),
                 shape: RoundedRectangleBorder(
+
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
@@ -62,12 +64,14 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                 );
+                // 회원가입 버튼 눌렀을 때의 동작
               },
               child: Text(
                 '회원가입',
                 style: TextStyle(
                   fontSize: 18,
                   fontFamily: 'AppleSDGothicNeo',
+
                 ),
               ),
             ),

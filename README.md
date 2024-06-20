@@ -1,5 +1,6 @@
 # Homing
 팀 너울 호밍 서비스
+<<<<<<< HEAD
 
 # homing
 
@@ -17,3 +18,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+>>>>>>> 524989a0c41afd46faaab3f198212ef38eab5f93

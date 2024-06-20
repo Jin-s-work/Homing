@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'register_page.dart';
-import 'colors.dart'; // 색상 정의 파일 불러오기
+import 'colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/register': (context) => RegisterPage(),
       },
+
     );
   }
 }
