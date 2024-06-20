@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
-
+import 'register_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -11,14 +11,14 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 173),
-            Image.asset('assets/logo.png', width: 172, height: 230), // 로고 이미지
+            Image.asset('assets/logo.png', width: 172, height: 230),
             SizedBox(height: 216),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.blackButton, // 버튼 배경색
+                backgroundColor: AppColors.blackButton,
                 foregroundColor: Colors.grey[50],
-                minimumSize: Size(344, 56), // 버튼 크기
-                shape: RoundedRectangleBorder( // 둥근 직사각형 모양
+                minimumSize: Size(344, 56),
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
@@ -29,28 +29,45 @@ class HomePage extends StatelessWidget {
                 '로그인',
                 style: TextStyle(
                   fontSize: 18,
-                  fontFamily: 'AppleSDGothicNeo', // 폰트 설정
+                  fontFamily: 'AppleSDGothicNeo',
                 ),
               ),
             ),
             SizedBox(height: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.greyButton, // 버튼 배경색
-                foregroundColor: Colors.black, // 텍스트 색상
-                minimumSize: Size(344, 56), // 버튼 크기
-                shape: RoundedRectangleBorder( // 둥근 직사각형 모양
+                backgroundColor: AppColors.greyButton,
+                foregroundColor: Colors.black,
+                minimumSize: Size(344, 56),
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
               onPressed: () {
-                // 회원가입 버튼 눌렀을 때의 동작
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) => RegisterPage(),
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                      var begin = Offset(1.0, 0.0);
+                      var end = Offset.zero;
+                      var curve = Curves.ease;
+
+                      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+                      return SlideTransition(
+                        position: animation.drive(tween),
+                        child: child,
+                      );
+                    },
+                  ),
+                );
               },
               child: Text(
                 '회원가입',
                 style: TextStyle(
                   fontSize: 18,
-                  fontFamily: 'AppleSDGothicNeo', // 폰트 설정
+                  fontFamily: 'AppleSDGothicNeo',
                 ),
               ),
             ),
