@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'register_page.dart';
+import 'login_page.dart';
+import 'tab_navigation.dart'; // TabNavigation 임포트
 import 'colors.dart';
 
 void main() {
@@ -21,8 +23,9 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: {
         '/register': (context) => RegisterPage(),
+        '/login': (context) => LoginPage(),
+        '/list': (context) => TabNavigation(),
       },
-
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
+import 'login_page.dart'; // LoginPage 임포트
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -17,6 +18,12 @@ class _RegisterPageState extends State<RegisterPage> {
     // 회원가입 로직 추가
     // 예: 입력값 유효성 검사, 서버에 데이터 전송 등
     print('회원가입 완료');
+
+    // 회원가입 완료 후 로그인 페이지로 이동
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
   }
 
   @override
@@ -43,46 +50,54 @@ class _RegisterPageState extends State<RegisterPage> {
         elevation: 0,
       ),
       backgroundColor: AppColors.whiteBackground,
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildLabelAndTextField('이름', '예) 홍길동', _nameController),
-            SizedBox(height: 24),
-            Row(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: _buildLabelAndTextField(
-                      '아이디', '예) abc123', _idController, false),
-                ),
-                SizedBox(width: 8),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.blackButton,
-                    minimumSize: Size(86, 52),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                _buildLabelAndTextField('이름', '예) 홍길동', _nameController),
+                SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildLabelAndTextField(
+                          '아이디', '예) abc123', _idController, false),
                     ),
-                  ),
-                  onPressed: () {
-                    // 중복 확인 로직 추가 필요
-                  },
-                  child: Text('중복 확인'),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.blackButton,
+                        minimumSize: Size(86, 52),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        // 중복 확인 로직 추가 필요
+                      },
+                      child: Text('중복 확인'),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 24),
+                _buildLabelAndTextField(
+                    '비밀번호', '비밀번호를 입력해주세요.', _passwordController, true),
+                SizedBox(height: 24),
+                _buildLabelAndTextField('비밀번호\n확인', '비밀번호를 다시 입력해주세요.',
+                    _confirmPasswordController, true),
+                SizedBox(height: 24),
+                _buildLabelAndTextField(
+                    '센터 코드', '예) homing99', _centerCodeController),
               ],
             ),
-            SizedBox(height: 24),
-            _buildLabelAndTextField(
-                '비밀번호', '비밀번호를 입력해주세요.', _passwordController, true),
-            SizedBox(height: 24),
-            _buildLabelAndTextField('비밀번호\n확인', '비밀번호를 다시 입력해주세요.',
-                _confirmPasswordController, true),
-            SizedBox(height: 24),
-            _buildLabelAndTextField(
-                '센터 코드', '예) homing99', _centerCodeController),
-            SizedBox(height: 263),
-            Center(
+          ),
+          Spacer(), // 가입 완료 버튼을 하단에 고정시키기 위해 Spacer 사용
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.blackButton,
@@ -101,8 +116,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

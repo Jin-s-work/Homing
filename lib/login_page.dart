@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'colors.dart'; // 커스텀 색상 파일을 임포트하세요
+import 'colors.dart';
+import 'tab_navigation.dart'; // TabNavigation 임포트
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,6 +16,11 @@ class _LoginPageState extends State<LoginPage> {
     // 예: 입력값 유효성 검사, 서버에 데이터 전송 등
     print('로그인 시도');
 
+    // 로그인 성공 시 TabNavigation으로 이동
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => TabNavigation()),
+    );
   }
 
   @override
